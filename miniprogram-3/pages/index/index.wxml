@@ -1,0 +1,105 @@
+<!--index.wxml-->
+<view class="xian_index">
+    <searchInput></searchInput>
+    <!-- <view>这里是首页内容 进度0</view> -->
+</view>
+
+<!-- 首页图片轮播 -->
+<view>
+  <swiper
+    indicator-dots="{{true}}"  
+    autoplay="{{true}}"
+    style="width: 750rpx;">
+    <swiper-item>
+      <!-- TODO（钟卓江）目前使用网络图片作为占位 -->
+      <image src="https://picsum.photos/200"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="https://picsum.photos/250"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="https://picsum.photos/300"></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<!-- 委托问答交易按钮 -->
+<view>
+  <i-row>
+    <i-col span="8" i-class="col-class">
+      <i-button type="primary" bind:click="handleClick" >委托</i-button>
+    </i-col>
+    <i-col span="8" i-class="col-class">
+      <i-button type="primary" bind:click="handleClick" >问答</i-button>
+    </i-col>
+    <i-col span="8" i-class="col-class">
+      <i-button type="primary" bind:click="handleClick" >交易</i-button>
+    </i-col>
+  </i-row>
+</view>
+
+<!-- 推荐列表 -->
+<view>
+  <i-cell-group>
+    <!-- TODO(钟卓江) i-cell的url是点击后会跳转到的地方，集成的时候需要修改 -->
+    <!-- TODO（钟卓江） thumb：图片内容先用网络图片占位，需要修改 -->
+    <!-- 第一个卡片 -->
+    <i-cell is-link url="/components/requestItem/requestItem" >
+      <i-card title="委托标ffffffffffffffffffffffffffffffffffff题" extra="额外内fffffffffffffffffffddddddddd容" thumb="https://picsum.photos/350" >
+        <view slot="content">内容不错</view>
+        <view slot="footer">尾部内容</view>
+      </i-card>
+    </i-cell>
+
+    <!-- 第二个卡片 -->
+    <i-cell is-link url="/components/requestItem/requestItem" >
+      <i-card title="卡片vv标题" extra="额外内容" thumb="https://picsum.photos/320" >
+        <view slot="content">内容不错</view>
+        <view slot="footer">尾部内容</view>
+      </i-card>
+    </i-cell>
+    
+    <!-- 第3个卡片 -->
+    <i-cell is-link url="/components/requestItem/requestItem" >
+      <i-card title="卡片标题" extra="额外内容" thumb="https://picsum.photos/400" >
+        <view slot="content">内容不错</view>
+        <view slot="footer">尾部内容</view>
+      </i-card>
+    </i-cell>
+
+    <!-- 第4个卡片 -->
+    <i-cell is-link url="/components/requestItem/requestItem" >
+      <i-card title="卡片标题" extra="额外内容" thumb="https://picsum.photos/450" >
+        <view slot="content">内容不错</view>
+        <view slot="footer">尾部内容</view>
+      </i-card>
+    </i-cell>
+</i-cell-group>
+</view>
+
+<!--index.wxml-->
+<view wx:for="{{goods}}" wx:for-item="item" wx:key="goods" class="{{index == 0 ? 'contains' : 'contain'}}" data-id="{{item._id}}" bindtap="showDetail">
+    <view class="media-box__hd">
+        <!-- 商品图片 -->
+        <image class="media-box__thumb" src="{{item.thumb}}"></image>
+    </view>
+    <view class="media-box__bd">
+        <!-- 商品标题 -->
+        <view class="media-box__title">{{item.title}}</view>
+        <!-- <view class="media-box__desc"> -->
+            <!-- 价格描述 -->
+            <view class="media-box__price">{{item.price}}</view>
+        <!-- </view>  -->
+        <!-- 推荐时间 -->
+        <!-- 右下角评论和推荐指数 -->
+        <view class="media-box__sc">
+            <view class="media-box__time">{{item.time}}</view>
+            <view class="media-box__des">
+                <image class="comment_image" src="../../assets/icons/comment.png"></image>
+                <text class="comment_text">{{item.comment}}</text>
+                <image class="value_image" src="../../assets/icons/value.png"></image>
+                <text class="value_text">{{item.value}}</text>
+            </view> 
+        </view>
+    </view>
+</view>
